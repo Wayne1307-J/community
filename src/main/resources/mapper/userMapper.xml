@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="indi.nowcoder.community.dao.UserMapper">
+    <sql id="selectFields">
+        <!--  抽取出重复使用的语句，以复用-->
+        id, username, password, salt, email, type, status, activation_code, header_url, create_time
+    </sql>
+    <sql id="insertFields">
+        username, password, salt, email, type, status, activation_code, header_url, create_time
+    </sql>
+    <!-- 根据id查询   -->
+    <select id="selectById" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where id = #{id}
+    </select>
+    <!-- 根据name查询   -->
+    <select id="selectByName" resultType="User"> #  声明返回类型
+        select <include refid="selectFields"></include>
+        from user
+        where username = #{username}
+    </select>
+    <!-- 根据email查询   -->
+    <select id="selectByEmail" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where email = #{email}
+    </select>
+    <!--  插入用户  -->
+    <!--  声明参数类型和 主键对应的属性（用于回填）-->
+    <insert id="insertUser" parameterType="User" keyProperty="id">
+        insert into user(<include refid="insertFields"></include>)
+        values(#{username},#{password},#{salt},#{email},#{type},#{status},#{activationCode},#{headerUrl},#{createTime})
+    </insert>
+
+    <!--  根据用户id更新状态  -->
+    <update id="updateStatus">
+        update user set status =#{status} where id=#{id}
+    </update>
+    <!--  更新路径  -->
+    <update id="updateHeader">
+        update user set header_url =#{headerUrl} where id=#{id}
+    </update>
+    <!-- 更新密码  -->
+    <update id="updatePassword">
+        update user set password =#{password} where id=#{id}
+    </update>
+
+</mapper>
