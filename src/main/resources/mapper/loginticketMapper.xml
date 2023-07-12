@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="indi.nowcoder.community.dao.LoginTicketMapper">
+    <sql id="selectFields">
+        <!--  抽取出重复使用的语句，以复用-->
+        id,user_id,ticket,status,expired
+    </sql>
+    <sql id="insertFields">
+        user_id,ticket,status,expired
+    </sql>
+    <!-- 根据id查询   -->
+
+<!--    <update id="updateStatus">-->
+<!--        update login_ticket-->
+<!--        set status=#{status}-->
+<!--        <where>-->
+<!--            <if test="ticket!=null">-->
+<!--                ticket=#{ticket}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </update>-->
+</mapper>
