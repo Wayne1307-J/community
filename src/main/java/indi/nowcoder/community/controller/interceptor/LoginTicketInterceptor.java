@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.Date;
-
 @Slf4j
 @Component
 public class LoginTicketInterceptor implements HandlerInterceptor {
@@ -22,7 +20,6 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
     private UserService userService;
     @Autowired
     private HostHolder hostHolder;
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //从cookie中获取凭证
@@ -41,15 +38,13 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
         log.debug("preHandle: " + handler.toString());
         return true;
     }
-
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         User user = hostHolder.getUser();
-        if (user != null && modelAndView != null) {
+        if (user != null && modelAndView != null) { // 登录信息显示到页面
             modelAndView.addObject("loginUser", user);
         }
     }
-
     /**
      * 在请求结束，清理数据
      * @param request

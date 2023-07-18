@@ -11,11 +11,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class MailClient {
     @Autowired
-    private JavaMailSender mailSender;
-
+    private JavaMailSender mailSender; // MailSender是一个邮件发送的接口，其中定义两个发送邮件的方法。JavaMailSender继承自MailSender接口，提供了更多的邮件发送方法。
     @Value("${spring.mail.username}")
     private String from;
-
     public void sendMail(String to, String subject, String content){
         try {
             MimeMessage message =mailSender.createMimeMessage();

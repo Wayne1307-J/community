@@ -111,7 +111,7 @@ public class LoginController implements CommunityConstant {
         BufferedImage image = kaptchaProducer.createImage(text);
         // 将验证码存入session
         session.setAttribute("kaptcha", text);
-        // 将突图片输出给浏览器
+        // 将图片输出给浏览器
         response.setContentType("image/png");
         try {
             OutputStream os = response.getOutputStream();
@@ -154,7 +154,6 @@ public class LoginController implements CommunityConstant {
         }else{ // 错误
             model.addAttribute("usernameMsg", map.get("usernameMsg"));
             model.addAttribute("passwordMsg", map.get("passwordMsg"));
-
             return "/site/login";
         }
 
