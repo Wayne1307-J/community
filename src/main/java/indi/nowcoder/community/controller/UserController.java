@@ -41,12 +41,22 @@ public class UserController {
     private HostHolder hostHolder;
     private CommunityUtils CommunityUtil;
 
+    /**
+     * 访问设置页面
+     * @return
+     */
     @LoginRequired
     @GetMapping("/setting")
     public String getSettingPage(){
         return "/site/setting";
     }
 
+    /**
+     * 上传图像
+     * @param headerImage
+     * @param model
+     * @return
+     */
     @LoginRequired
     @PostMapping("/upload")
     public String uploadHeader(MultipartFile headerImage, Model model) {
@@ -55,14 +65,12 @@ public class UserController {
             model.addAttribute("error", "您还没有选择图片!");
             return "/site/setting";
         }
-
         String fileName = headerImage.getOriginalFilename(); // 获取文件名
         String suffix = fileName.substring(fileName.lastIndexOf(".")); // 获取文件名的后缀
         if (StringUtils.isBlank(suffix)) {
             model.addAttribute("error", "文件的格式不正确!");
             return "/site/setting";
         }
-
         // 生成随机文件名
         fileName = CommunityUtil.generateUUID() + suffix;
         // 确定文件存放的路径
@@ -74,7 +82,6 @@ public class UserController {
             log.error("上传文件失败: " + e.getMessage());
             throw new RuntimeException("上传文件失败,服务器发生异常!", e);
         }
-
         // 更新当前用户的头像的路径(web访问路径)
         // http://localhost:8080/community/user/header/xxx.png
         User user = hostHolder.getUser();
@@ -83,6 +90,11 @@ public class UserController {
         return "redirect:/index";
     }
 
+    /**
+     * 查看图像
+     * @param fileName
+     * @param response
+     */
     @GetMapping("/header/{fileName}")
     public void getHeader(@PathVariable("fileName") String fileName, HttpServletResponse response){
         // 服务器存放的路径

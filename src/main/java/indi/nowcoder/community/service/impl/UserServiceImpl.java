@@ -84,15 +84,15 @@ public class UserServiceImpl implements UserService, CommunityConstant {
         user.setActivationCode(CommunityUtils.generateUUID());
         user.setHeaderUrl(String.format("https://images.nowcoder.com/head/%dt.png",new Random().nextInt(1000)));
         user.setCreateTime(new Date());
-        userMapper.insertUser(user);
+        userMapper.insertUser(user); // 将新用户信息插入到表中
         // 激活邮件
         Context context=new Context();
         context.setVariable("email", user.getEmail());
         // http://localhost:8080/community/activation/101/code
-        String url=domain+contextPath+"/activation/"+user.getId()+"/"+user.getActivationCode();
+        String url=domain+contextPath+"/activation/"+user.getId()+"/"+user.getActivationCode(); // 拼接激活地址
         context.setVariable("url",url);
         String content = templateEngine.process("/mail/activation",context);
-        mailClient.sendMail(user.getEmail(),"激活账号", content);
+        mailClient.sendMail(user.getEmail(),"激活账号", content); // 发送邮件
         return map;
     }
 
@@ -161,6 +161,10 @@ public class UserServiceImpl implements UserService, CommunityConstant {
         return map;
     }
 
+    /**
+     * 退出
+     * @param ticket
+     */
     @Override
     public void logout(String ticket) {
         loginTicketMapper.updateStatus(ticket,1);
@@ -172,8 +176,13 @@ public class UserServiceImpl implements UserService, CommunityConstant {
     }
 
     @Override
-    public int updateHeader(int userId, String headerUrl) {
+    public int updateHeader(int userId, String headerUrl){
         return userMapper.updateHeader(userId,headerUrl);
+    }
+
+    @Override
+    public User findUserByName(String username) {
+        return userMapper.selectByName(username);
     }
 
 
