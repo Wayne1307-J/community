@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
+@Deprecated
 public interface LoginTicketMapper {
     @Insert("insert into login_ticket(user_id,ticket,status,expired)"+"values(#{userId},#{ticket},#{status},#{expired})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
