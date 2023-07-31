@@ -49,7 +49,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.15.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.15.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.15.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.15.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.15.2" level="project" />
@@ -112,7 +111,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:3.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-oxm:6.0.10" level="project" />
     <orderEntry type="library" name="Maven: io.lettuce:lettuce-core:6.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.94.Final" level="project" />
@@ -139,6 +137,19 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.xerial.snappy:snappy-java:1.1.8.4" level="project" />
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-observation:1.11.1" level="project" />
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-commons:1.11.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-elasticsearch:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-elasticsearch:5.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: co.elastic.clients:elasticsearch-java:8.7.1" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.json:jakarta.json-api:2.1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.parsson:parsson:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.elasticsearch.client:elasticsearch-rest-client:8.7.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.16" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpasyncclient:4.1.5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.16" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.15.2" level="project" />
   </component>
 </module>

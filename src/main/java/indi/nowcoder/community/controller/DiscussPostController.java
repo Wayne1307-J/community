@@ -1,9 +1,7 @@
 package indi.nowcoder.community.controller;
 
-import indi.nowcoder.community.entity.Comment;
-import indi.nowcoder.community.entity.DiscussPost;
-import indi.nowcoder.community.entity.Page;
-import indi.nowcoder.community.entity.User;
+import indi.nowcoder.community.entity.*;
+import indi.nowcoder.community.event.EventProducer;
 import indi.nowcoder.community.service.CommentService;
 import indi.nowcoder.community.service.DiscussPostService;
 import indi.nowcoder.community.service.LikeService;
@@ -33,6 +31,9 @@ public class DiscussPostController implements CommunityConstant {
     @Autowired
     private LikeService likeService;
 
+    @Autowired
+    private EventProducer eventProducer;
+
 
 
     /**
@@ -54,6 +55,15 @@ public class DiscussPostController implements CommunityConstant {
         post.setContent(content);
         post.setCreateTime(new Date());
         discussPostService.addDiscussPost(post);
+
+        // 触发发帖事件
+        Event event = new Event()
+                .setTopic(TOPIC_PUBLISH)
+                .setUserId(user.getId())
+                .setEntityType(ENTITY_TYPE_POST)
+                .setEntityId(post.getId());
+        eventProducer.fireEvent(event);
+
         // 报错的情况,将来统一处理.
         return CommunityUtils.getJSONString(0, "发布成功!");
     }
