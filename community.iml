@@ -151,5 +151,10 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.16" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.15.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:6.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:6.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:6.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:6.1.1" level="project" />
   </component>
 </module>

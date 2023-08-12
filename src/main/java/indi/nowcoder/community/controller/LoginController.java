@@ -7,11 +7,15 @@ import indi.nowcoder.community.util.CommunityConstant;
 import indi.nowcoder.community.util.CommunityUtils;
 import indi.nowcoder.community.util.RedisKeyUtil;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -40,11 +44,12 @@ public class LoginController implements CommunityConstant {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private SecurityContextLogoutHandler securityContextLogoutHandler;
+
     @Value("${server.servlet.context-path}")
     private String contextPath;
-
-
-
 
     /**
      * 访问注册页面
@@ -184,8 +189,10 @@ public class LoginController implements CommunityConstant {
     }
 
     @GetMapping("/logout")
-    public String logout(@CookieValue("ticket") String ticket){
+    public String logout(@CookieValue("ticket") String ticket, Authentication authentication, HttpServletRequest request, HttpServletResponse response){
         userService.logout(ticket);
+        SecurityContextHolder.clearContext();
+        securityContextLogoutHandler.logout(request, response, authentication);
         return "redirect:/login";
     }
 

@@ -2,7 +2,9 @@ package indi.nowcoder.community.service;
 
 import indi.nowcoder.community.entity.LoginTicket;
 import indi.nowcoder.community.entity.User;
+import org.springframework.security.core.GrantedAuthority;
 
+import java.util.Collection;
 import java.util.Map;
 
 public interface UserService {
@@ -26,6 +28,8 @@ public interface UserService {
     int updateHeader(int userId, String headerUrl);
 
     User findUserByName(String username);
+
+    Collection<? extends GrantedAuthority> getAuthorities(int userId);
 
 
 }
