@@ -66,6 +66,20 @@ public class SecurityConfig implements CommunityConstant {
                         AUTHORITY_ADMIN,
                         AUTHORITY_MODERATOR
                 )
+                .requestMatchers(
+                        "/discuss/top",
+                        "/discuss/wonderful"
+                )
+                .hasAnyAuthority(  // 拥有以下任意一个权限就可以访问上述的路径
+                        AUTHORITY_MODERATOR
+                )
+                .requestMatchers(
+                        "/discuss/delete",
+                        "/data/**"
+                )
+                .hasAnyAuthority(  // 拥有以下任意一个权限就可以访问上述的路径
+                        AUTHORITY_ADMIN
+                )
                 .anyRequest().permitAll() // 除了上述路径外，其他的路径可以随意访问
             );
 

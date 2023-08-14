@@ -13,8 +13,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 @Slf4j
 public class ServiceLogAspect {
     @Pointcut("execution(* indi.nowcoder.community.service.*.*(..))")

@@ -12,7 +12,7 @@ public interface DiscussPostService {
      * @param limit
      * @return
      */
-    List<DiscussPost> findDiscussPosts(int userId, int offset, int limit);
+    List<DiscussPost> findDiscussPosts(int userId, int offset, int limit, int orderMode);
 
     /**
      * 查询指定userId的条目数量
@@ -42,4 +42,23 @@ public interface DiscussPostService {
      * @return
      */
     int updateCommentCount(int id, int commentCount);
+
+    /**
+     * 更新类型
+     * @param id
+     * @param type
+     * @return
+     */
+    int updateType(int id, int type);
+
+    /**
+     * 更新状态
+     * @param id
+     * @param status
+     * @return
+     */
+    int updateStatus(int id, int status);
+
+    int updateScore(int id, double score);
+
 }
